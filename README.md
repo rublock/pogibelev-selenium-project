@@ -3,5 +3,5 @@
 
 Запуск тестов
 ```bash
-pytest --language=en -s -v file_name
+pytest -v --tb=line --language=en test_main_page.py
 ```
