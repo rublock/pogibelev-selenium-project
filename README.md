@@ -3,5 +3,5 @@
 
 Запуск тестов
 ```bash
-pytest -s -v --browser_name=chrome file_name
+pytest --language=en -s -v file_name
 ```
