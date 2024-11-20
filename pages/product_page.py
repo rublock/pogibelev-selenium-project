@@ -1,3 +1,5 @@
+import time
+
 from pages.base_page import BasePage
 from pages.locators import ProductPageLocators
 
@@ -23,4 +25,7 @@ class ProductPage(BasePage):
     def add_to_chart(self):
         self.browser.find_element(*ProductPageLocators.ADD_TO_CHART_BUTTON).click()
         self.solve_quiz_and_get_code()
+        element = self.browser.find_element(*ProductPageLocators.ADDED_TO_CHART_TEXT)
         pass
+        assert element.text == 'red test!!!'
+        time.sleep(30000)
