@@ -3,5 +3,8 @@
 
 Запуск тестов
 ```bash
-pytest -v --tb=line --language=en test_main_page.py
+pytest -v -s --tb=line --language=en test_main_page.py
+```
+```bash
+pytest -v -s --tb=line --language=en test_product_page.py
 ```

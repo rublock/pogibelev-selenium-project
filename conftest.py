@@ -18,6 +18,7 @@ def browser(request):
     print("\nquit browser..")
     browser.quit()
 
+
 @pytest.fixture
 def language(request):
     return request.config.getoption("--language")
