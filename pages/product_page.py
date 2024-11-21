@@ -6,26 +6,23 @@ from pages.locators import ProductPageLocators
 
 class ProductPage(BasePage):
 
-    def should_be_product_page(self):
-        self.check_url()
-        self.should_be_add_to_chart_button()
+    def run_product_page_tests(self):
+        self.get_book_name()
         self.add_to_chart()
-
-    def check_url(self):
-        assert (
-            self.browser.current_url
-            == "https://selenium1py.pythonanywhere.com/en-gb/catalogue/the-shellcoders-handbook_209/?promo=newYear"
-        ), "Неверный URL адрес"
-
-    def should_be_add_to_chart_button(self):
-        assert self.is_element_present(
-            *ProductPageLocators.ADD_TO_CHART_BUTTON
-        ), "Нет кнопки добавить в корзину"
+        self.check_book_name_added_to_chart()
 
     def add_to_chart(self):
         self.browser.find_element(*ProductPageLocators.ADD_TO_CHART_BUTTON).click()
         self.solve_quiz_and_get_code()
-        element = self.browser.find_element(*ProductPageLocators.ADDED_TO_CHART_TEXT)
-        pass
-        assert element.text == 'red test!!!'
-        time.sleep(30000)
+
+    def get_book_name(self):
+        text = self.browser.find_element(*ProductPageLocators.BOOK_TEXT)
+        return text.text
+
+    def check_book_name_added_to_chart(self):
+        """
+        Проверка, что текст после добавления в корзину
+        содержит то же название книги, что и добавлена.
+        """
+        text = self.browser.find_element(*ProductPageLocators.BOOK_TEXT_ADDED_TO_CHART)
+        assert text.text == self.get_book_name(), 'Название книги не соответствует добавленной в корзину'

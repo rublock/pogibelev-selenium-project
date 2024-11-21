@@ -13,4 +13,5 @@ class LoginPageLocators:
 
 class ProductPageLocators:
     ADD_TO_CHART_BUTTON = (By.CSS_SELECTOR, ".btn-add-to-basket")
-    ADDED_TO_CHART_TEXT = (By.XPATH, "//div[@class='alertinner']//strong")
+    BOOK_TEXT = (By.CSS_SELECTOR, ".col-sm-6.product_main h1")
+    BOOK_TEXT_ADDED_TO_CHART = (By.CSS_SELECTOR, "#messages .alertinner strong")

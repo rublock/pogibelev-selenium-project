@@ -6,4 +6,4 @@ link = "http://selenium1py.pythonanywhere.com/catalogue/the-shellcoders-handbook
 def test_guest_can_add_product_to_basket(browser):
     page = ProductPage(browser, link)
     page.open()
-    page.should_be_product_page()
+    page.run_product_page_tests()
