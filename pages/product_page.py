@@ -10,6 +10,7 @@ class ProductPage(BasePage):
         self.get_book_name()
         self.add_to_chart()
         self.check_book_name_added_to_chart()
+        self.check_book_price_added_to_chart()
 
     def add_to_chart(self):
         self.browser.find_element(*ProductPageLocators.ADD_TO_CHART_BUTTON).click()
@@ -19,6 +20,9 @@ class ProductPage(BasePage):
         text = self.browser.find_element(*ProductPageLocators.BOOK_TEXT)
         return text.text
 
+    def get_book_price(self):
+        return self.browser.find_element(*ProductPageLocators.BOOK_PRICE).text
+
     def check_book_name_added_to_chart(self):
         """
         Проверка, что текст после добавления в корзину
@@ -26,3 +30,11 @@ class ProductPage(BasePage):
         """
         text = self.browser.find_element(*ProductPageLocators.BOOK_TEXT_ADDED_TO_CHART)
         assert text.text == self.get_book_name(), 'Название книги не соответствует добавленной в корзину'
+
+    def check_book_price_added_to_chart(self):
+        """
+        Проверка, что цена после добавления в корзину
+        такая, что и в корзине.
+        """
+        price = self.browser.find_element(*ProductPageLocators.BOOK_PRICE_ADDED_TO_CHART)
+        assert price.text == self.get_book_price(), 'Цена книги не соответствует добавленной в корзину'

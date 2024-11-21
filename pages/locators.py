@@ -15,3 +15,5 @@ class ProductPageLocators:
     ADD_TO_CHART_BUTTON = (By.CSS_SELECTOR, ".btn-add-to-basket")
     BOOK_TEXT = (By.CSS_SELECTOR, ".col-sm-6.product_main h1")
     BOOK_TEXT_ADDED_TO_CHART = (By.CSS_SELECTOR, "#messages .alertinner strong")
+    BOOK_PRICE = (By.CSS_SELECTOR, ".col-sm-6.product_main p")
+    BOOK_PRICE_ADDED_TO_CHART = (By.CSS_SELECTOR, "#messages .alertinner p strong")
