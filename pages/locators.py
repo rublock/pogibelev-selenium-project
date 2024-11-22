@@ -17,3 +17,4 @@ class ProductPageLocators:
     BOOK_TEXT_ADDED_TO_CHART = (By.CSS_SELECTOR, "#messages .alertinner strong")
     BOOK_PRICE = (By.CSS_SELECTOR, ".col-sm-6.product_main p")
     BOOK_PRICE_ADDED_TO_CHART = (By.CSS_SELECTOR, "#messages .alertinner p strong")
+    SUCCESS_MESSAGE = (By.CSS_SELECTOR, "#messages .alert-success")
