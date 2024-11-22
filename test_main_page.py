@@ -1,5 +1,4 @@
-import time
-
+from pages.basket_page import BasketPage
 from pages.login_page import LoginPage
 from pages.main_page import MainPage
 
@@ -26,3 +25,10 @@ def test_url_and_login_register_forms(browser):
     page = LoginPage(browser, link)
     page.open()
     page.should_be_login_page()
+
+
+def test_guest_cant_see_product_in_basket_opened_from_main_page(browser):
+    page = BasketPage(browser, link)
+    page.open()
+    page.go_to_basket()
+    page.should_be_empty_basket()
