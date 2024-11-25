@@ -73,3 +73,7 @@ class BasePage:
             if element.text == "View basket":
                 element.click()
                 break
+
+    def should_be_authorized_user(self):
+        assert self.is_element_present(*BasePageLocators.USER_ICON), "User icon is not presented," \
+                                                                     " probably unauthorised user"

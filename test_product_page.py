@@ -1,6 +1,8 @@
+from faker import Faker
 import pytest
 
 from pages.basket_page import BasketPage
+from pages.login_page import LoginPage
 from pages.product_page import ProductPage
 
 links = [
@@ -20,14 +22,30 @@ links = [
 ]
 
 
-@pytest.mark.parametrize("link", links)
-def test_guest_can_add_product_to_basket(browser, link):
-    page = ProductPage(browser, link)
-    page.open()
-    page.get_book_name()
-    page.add_to_chart()
-    page.check_book_name_added_to_chart()
-    page.check_book_price_added_to_chart()
+@pytest.mark.user_guest
+class TestUserAddToBasketFromProductPage:
+    link = "http://selenium1py.pythonanywhere.com/en-gb/catalogue/the-city-and-the-stars_95/"
+
+    @pytest.fixture(scope="function", autouse=True)
+    def setup(self, browser):
+        fake = Faker()
+        email = fake.email()
+        password = fake.password(length=10, special_chars=True, digits=True, upper_case=True, lower_case=True)
+        self.page = LoginPage(browser, self.link)
+        self.page.open()
+        self.page.register_new_user(email, password)
+        self.page.should_be_authorized_user()
+
+    def test_user_cant_see_success_message(self, browser):
+        page = ProductPage(browser, self.link)
+        page.should_not_be_success_message()
+
+    def test_user_can_add_product_to_basket(self, browser):
+        page = ProductPage(browser, self.link)
+        page.get_book_name()
+        page.add_to_chart()
+        page.check_book_name_added_to_chart()
+        page.check_book_price_added_to_chart()
 
 
 @pytest.mark.parametrize("link", links)
@@ -35,13 +53,6 @@ def test_guest_cant_see_success_message_after_adding_product_to_basket(browser, 
     page = ProductPage(browser, link)
     page.open()
     page.add_to_chart()
-    page.should_not_be_success_message()
-
-
-@pytest.mark.parametrize("link", links)
-def test_guest_cant_see_success_message(browser, link):
-    page = ProductPage(browser, link)
-    page.open()
     page.should_not_be_success_message()
 
 
