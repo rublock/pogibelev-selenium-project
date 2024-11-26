@@ -21,9 +21,9 @@ class LoginPageLocators:
 class ProductPageLocators:
     ADD_TO_CHART_BUTTON = (By.CSS_SELECTOR, ".btn-add-to-basket")
     BOOK_TEXT = (By.CSS_SELECTOR, ".col-sm-6.product_main h1")
-    BOOK_TEXT_ADDED_TO_CHART = (By.XPATH, "//h3/a[contains(text(), 'shellcoder')]")
+    BOOK_TEXT_ADDED_TO_CHART = (By.CSS_SELECTOR, ".basket-items .col-sm-4 a")
     BOOK_PRICE = (By.CSS_SELECTOR, ".col-sm-6.product_main p")
-    BOOK_PRICE_ADDED_TO_CHART = (By.XPATH, "//p[contains(text(), '£9.99')]")
+    BOOK_PRICE_ADDED_TO_CHART = (By.CSS_SELECTOR, ".basket-items .col-sm-1 p")
     SUCCESS_MESSAGE = (By.CSS_SELECTOR, "#messages .alert-success")
 
 
