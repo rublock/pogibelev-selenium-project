@@ -8,10 +8,6 @@ class BasePageLocators:
     USER_ICON = (By.CSS_SELECTOR, ".icon-user")
 
 
-class MainPageLocators:
-    LOGIN_LINK = (By.CSS_SELECTOR, "#login_link")
-
-
 class LoginPageLocators:
     LOGIN_LINK = (By.CSS_SELECTOR, "#login_link")
     LOGIN_FORM = (By.CSS_SELECTOR, "#login_form")
@@ -25,9 +21,9 @@ class LoginPageLocators:
 class ProductPageLocators:
     ADD_TO_CHART_BUTTON = (By.CSS_SELECTOR, ".btn-add-to-basket")
     BOOK_TEXT = (By.CSS_SELECTOR, ".col-sm-6.product_main h1")
-    BOOK_TEXT_ADDED_TO_CHART = (By.CSS_SELECTOR, "#messages .alertinner strong")
+    BOOK_TEXT_ADDED_TO_CHART = (By.XPATH, "//h3/a[contains(text(), 'shellcoder')]")
     BOOK_PRICE = (By.CSS_SELECTOR, ".col-sm-6.product_main p")
-    BOOK_PRICE_ADDED_TO_CHART = (By.CSS_SELECTOR, "#messages .alertinner p strong")
+    BOOK_PRICE_ADDED_TO_CHART = (By.XPATH, "//p[contains(text(), '£9.99')]")
     SUCCESS_MESSAGE = (By.CSS_SELECTOR, "#messages .alert-success")
 
 

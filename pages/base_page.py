@@ -53,10 +53,10 @@ class BasePage:
         try:
             alert = self.browser.switch_to.alert
             alert_text = alert.text
-            print(f"Your code: {alert_text}")
+            print(f"Ваш код: {alert_text}")
             alert.accept()
         except NoAlertPresentException:
-            print("No second alert presented")
+            print("Второй alert не показан")
 
     def go_to_login_page(self):
         login_link = self.browser.find_element(*BasePageLocators.LOGIN_LINK)
@@ -65,7 +65,7 @@ class BasePage:
     def should_be_login_link(self):
         assert self.is_element_present(
             *BasePageLocators.LOGIN_LINK
-        ), "Login link is not presented"
+        ), "Нет ссылки на login"
 
     def go_to_basket(self):
         basket_link = self.browser.find_elements(*BasePageLocators.BASKET_LINK)
@@ -75,5 +75,6 @@ class BasePage:
                 break
 
     def should_be_authorized_user(self):
-        assert self.is_element_present(*BasePageLocators.USER_ICON), "User icon is not presented," \
-                                                                     " probably unauthorised user"
+        assert self.is_element_present(*BasePageLocators.USER_ICON), (
+            "Нет иконки пользователя, возможно пользователь не авторизован"
+        )
