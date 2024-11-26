@@ -3,5 +3,8 @@
 
 Запуск тестов
 ```bash
-pytest -s -v --browser_name=chrome file_name
+pytest -v --tb=line --language=en -m need_review
+```
+```bash
+pytest -v --tb=line --language=en -m login_guest
 ```
