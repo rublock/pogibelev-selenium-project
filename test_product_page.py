@@ -46,13 +46,12 @@ class TestGuestActionsInProductPage:
         page.check_book_name_added_to_chart(book_name)
         page.check_book_price_added_to_chart(book_price)
 
-    @pytest.mark.xfail(reason="Ожидаемая ошибка, корзина должна быть пуста")
     def test_guest_cant_see_product_in_basket_opened_from_product_page(self, browser):
         page = BasketPage(browser, link)
         page.open()
         page.go_to_basket()
         page.should_be_empty_basket()
-        page.should_not_be_empty_basket()
+        page.should_be_empty_basket_text()
 
     def test_guest_can_go_to_login_page_from_product_page(self, browser):
         page = ProductPage(browser, link)
